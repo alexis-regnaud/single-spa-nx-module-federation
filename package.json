@@ -1,0 +1,10 @@
+{
+  "name": "single-spa-federation-monorepo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start" : "pnpm -stream -parallel -filter \"@org/*\" run start",
+    "postinstall": "pnpm -stream -filter \"@org/*\" install"
+  },
+  "private": true
+}
