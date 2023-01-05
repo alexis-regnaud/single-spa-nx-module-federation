@@ -11,12 +11,7 @@ module.exports = async (config, context) => {
     ...mfConfig,
   });
 
-  const finalConfig = merge(federatedModules(config, context), {
+  return merge(federatedModules(config, context), {
     // overwrite values here
   });
-
-  console.log('finalConfig', finalConfig);
-  console.log('ModuleFederation', finalConfig.plugins[7]._options);
-
-  return finalConfig;
 };

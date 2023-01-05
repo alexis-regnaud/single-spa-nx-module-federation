@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "pnpm nx serve host",
+    "start": "pnpm nx serve host --open",
     "build": "nx build",
     "test": "nx test"
   },
