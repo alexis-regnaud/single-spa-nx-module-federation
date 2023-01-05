@@ -1,0 +1,14 @@
+<single-spa-router>
+  <div class="root">
+    <application name="layout/Header"></application>
+    <application name="layout/Navigation"></application>
+    <div class="main-content">
+      <route default>
+        <application name="hostreact/App"></application>
+      </route>
+      <route path="angular">
+        <application name="hostangular/App"></application>
+      </route>
+    </div>
+  </div>
+</single-spa-router>

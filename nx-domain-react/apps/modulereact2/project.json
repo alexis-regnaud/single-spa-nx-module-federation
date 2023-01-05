@@ -1,0 +1,102 @@
+{
+  "name": "modulereact2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/modulereact2/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/modulereact2",
+        "index": "apps/modulereact2/src/index.html",
+        "baseHref": "/",
+        "main": "apps/modulereact2/src/main.ts",
+        "polyfills": "apps/modulereact2/src/polyfills.ts",
+        "tsConfig": "apps/modulereact2/tsconfig.app.json",
+        "assets": [
+          "apps/modulereact2/src/favicon.ico",
+          "apps/modulereact2/src/assets"
+        ],
+        "styles": ["apps/modulereact2/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/modulereact2/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/modulereact2/src/environments/environment.ts",
+              "with": "apps/modulereact2/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/modulereact2/webpack.config.prod.js"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "modulereact2:build",
+        "hmr": true,
+        "port": 3012
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "modulereact2:build:development"
+        },
+        "production": {
+          "buildTarget": "modulereact2:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/modulereact2/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/modulereact2/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "modulereact2:build",
+        "port": 3012
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "modulereact2:build:development"
+        },
+        "production": {
+          "buildTarget": "modulereact2:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

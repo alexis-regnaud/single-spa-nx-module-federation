@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+.main-content {
+  padding-left: 177px;
+  padding-top: 60px;
+}
+
+/*#single-spa-application\:hostreact\/App {
+  flex-grow: 1;
+}*/
+
+.MuiDrawer-paper{
+  position: fixed!important;
+}

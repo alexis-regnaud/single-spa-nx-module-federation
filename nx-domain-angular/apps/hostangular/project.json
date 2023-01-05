@@ -1,0 +1,99 @@
+{
+  "name": "hostangular",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/hostangular/src",
+  "prefix": "nx-domain-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/hostangular",
+        "index": "apps/hostangular/src/index.html",
+        "main": "apps/hostangular/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/hostangular/tsconfig.app.json",
+        "assets": [
+          "apps/hostangular/src/favicon.ico",
+          "apps/hostangular/src/assets"
+        ],
+        "styles": ["apps/hostangular/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/hostangular/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/hostangular/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:module-federation-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "hostangular:build:production"
+        },
+        "development": {
+          "browserTarget": "hostangular:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 3020,
+        "publicHost": "http://localhost:3020"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "hostangular:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/hostangular/**/*.ts",
+          "apps/hostangular/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hostangular/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
