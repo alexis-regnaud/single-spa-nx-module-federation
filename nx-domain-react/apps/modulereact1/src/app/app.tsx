@@ -107,10 +107,10 @@ html {
         line-height: 2.25rem;
         margin-bottom: 0.5rem;
       }
-      
+
       #parcels {
         padding-top: 40px;
-      } 
+      }
       #love {
         color: rgba(107, 114, 128, 1);
         font-size: 0.875rem;

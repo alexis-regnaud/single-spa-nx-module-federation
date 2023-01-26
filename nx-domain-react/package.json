@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build": "pnpm nx build --verbose --output-style=stream",
     "start": "pnpm nx serve hostreact",
+    "start:next": "nx build && concurrently 'nx run 3000-home:serve:development --output-style=stream' 'nx run 3001-shop:serve:development --output-style=stream' 'nx run 3002-checkout:serve:development --output-style=stream'",
+    "serve:next": "nx build && concurrently 'nx run 3000-home:serve:production --output-style=stream' 'nx run 3001-shop:serve:production --output-style=stream' 'nx run 3002-checkout:serve:production --output-style=stream'",
     "start-all": "nx run-many --parallel --target=serve",
-    "build": "nx build",
     "test": "nx test"
   },
   "private": true,
@@ -68,7 +70,10 @@
     "@angular/platform-browser": "~15.0.0",
     "@angular/platform-browser-dynamic": "~15.0.0",
     "@angular/router": "~15.0.0",
+    "@module-federation/typescript": "^2.1.4",
     "core-js": "^3.6.5",
+    "http-server": "^14.1.1",
+    "path": "^0.12.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "6.4.3",
@@ -79,7 +84,6 @@
     "single-spa-react": "^4.3.1",
     "tslib": "^2.3.0",
     "webpack-merge": "^5.8.0",
-    "zone.js": "~0.11.4",
-    "http-server": "^14.1.1"
+    "zone.js": "~0.11.4"
   }
 }
