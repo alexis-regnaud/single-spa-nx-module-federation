@@ -76,5 +76,7 @@ module.exports = async (config, context) => {
   /*  console.log('finalConfig', finalConfig);
   console.log('ModuleFederation', finalConfig.plugins[6]);*/
 
+  console.log('finalConfig', finalConfig);
+
   return finalConfig;
 };

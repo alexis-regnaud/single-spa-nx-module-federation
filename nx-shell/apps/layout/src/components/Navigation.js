@@ -81,7 +81,11 @@ function Navigation() {
       </Box>
       <Divider />
       <List>
-        <ListItemLink to="/" icon={<DashboardIcon />} text="React Domain" />
+        <ListItemLink
+          to="/react"
+          icon={<DashboardIcon />}
+          text="React Domain"
+        />
         <ListItemLink
           to="/angular"
           icon={<ShoppingCartIcon />}

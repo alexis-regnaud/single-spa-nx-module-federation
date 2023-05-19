@@ -12,7 +12,7 @@ import { mountRootParcel } from 'single-spa';
 export function App() {
   return (
     <StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="react">
         <React.Suspense fallback={null}>
           <ul>
             <li>
